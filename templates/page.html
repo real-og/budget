@@ -1,4 +1,34 @@
-{%for exp in exps:%}
-    {{exp}}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/css/styles.css">
+    <title>Budget</title>
+</head>
+<body>
+    <div>
+        <h2>Твои расходы, брат:</h2>
+        {%for exp in exps:%}
+            <div>{{exp['Date']}} ты потратил {{exp['Amount']}} на {{exp['Category']}}</div>
+        {%endfor%}
+    </div>
     <br>
-{%endfor%}
+    <form action="" method="post">
+        <div>
+            <label for="amount"><b>Сколько потратил</b></label>
+            <input name="amount" type="text" placeholder="сколько" required="required" />
+        </div>
+        <div>
+            <label for="cat"><b>Имя</b>Куда потратил?</label>
+            <input name="cat" type="text" placeholder="на что" required="required" />
+        </div>
+        <div>
+            <label for="date"><b>Дата</b></label>
+            <input type="date" placeholder="когда" name="date" required>
+        </div>
+        <button type="submit">Добавить</button>
+    </form>
+</body>
+</html>
