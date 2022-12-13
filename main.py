@@ -1,7 +1,5 @@
-import os
-from flask import Flask, render_template, request, flash, redirect, url_for
+from flask import Flask, render_template, request
 from db import *
-import datetime
 
 def is_digit(string):
     if string.isdigit():
@@ -12,8 +10,6 @@ def is_digit(string):
             return True
         except ValueError:
             return False
-
-
 
 app = Flask(__name__)
 
@@ -26,7 +22,15 @@ def index():
         if is_digit(amount):
             add_expense(cat, date, amount)
     expenses = get_data()
-    return render_template('page.html', exps=expenses)
+    return render_template('page.html',
+                           exps=expenses,
+                           data={'Task' : 'Hours per Day'} | get_data_by_cat()
+                           )
+
+@app.route("/<month>")
+def show_by_month(month):
+    data = {'Task' : 'Hours per Day'} | get_data_by_cat(int(month))
+    return render_template('by_month.html', data = data, month=month)
 
 if __name__ == "__main__":
     app.run(debug=True)

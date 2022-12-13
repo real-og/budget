@@ -32,28 +32,12 @@
     <title>Budget</title>
 </head>
 <body>
-    <div>
-        <h2>All ur expenses, bruh:</h2>
+    <h2>Ur expenses in {{month}}th month:</h2>
         {%for exp in exps:%}
             <div>{{exp['Date']}} you spent {{exp['Amount']}} to the {{exp['Category']}}</div>
         {%endfor%}
-    </div>
-    <br>
-    <form action="" method="post">
-        <div>
-            <label for="amount"><b>How much</b></label>
-            <input name="amount" type="text" placeholder="amount" required="required" />
-        </div>
-        <div>
-            <label for="cat">What category?</label>
-            <input name="cat" type="text" placeholder="for what" required="required" />
-        </div>
-        <div>
-            <label for="date"><b>Date</b></label>
-            <input type="date" placeholder="when" name="date" required>
-        </div>
-        <button type="submit">Add</button>
-    </form>
+
     <div id="piechart_3d" style="width: 900px; height: 500px;"></div>
+    <a href="/">На главную</a>
 </body>
 </html>
